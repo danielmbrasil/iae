@@ -1,0 +1,107 @@
+body{
+	margin: 0;
+	padding: 0;
+    padding-block: 60px;
+	height: 100%;
+    min-height: 100vh;
+    background: linear-gradient(rgb(169,179,206) 50%, rgb(158, 120, 143) 100%) no-repeat center center scroll;
+}
+  
+.user-card {
+    max-width: 400px;
+    margin-top: 90px;
+    margin-bottom: auto;
+    background: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
+.brand-logo-container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    background: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.brand-logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 15px solid rgb(169,179,206);
+}
+
+.form-container {
+    margin-top: 100px;
+}
+
+.input-group{
+    flex-wrap: nowrap;
+}
+
+.input-group-text {
+    background: rgb(158, 120, 143) !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+    width: 40px;
+    height: auto;
+    justify-content: center;
+}
+
+.btn-submit{
+    color: #fff;
+    background: linear-gradient(45deg, rgba(158,120,143,1) 0%, rgba(169,179,206,1) 100%);
+    border-color: rgb(158, 120, 143) ;
+}
+.btn-submit:active{
+    color: #fff;
+    background: linear-gradient(45deg, rgb(144, 107, 129) 0%, rgb(108, 130, 188) 100%);
+}
+.btn-submit:focus{
+    color: #fff;
+    border-color: rgb(45,6,35);
+}
+.btn-submit:hover{
+    color: #fff;
+    border-color: rgb(45,6,35);
+}
+
+.btn-common{
+    color: #fff;
+    background: linear-gradient(90deg, rgb(215, 137, 184) 0%, rgb(169, 181, 215) 100%);
+    border-color: rgb(158, 120, 143) ;
+}
+.btn-common:active{
+    color: #fff;
+    background: linear-gradient(90deg, rgb(159, 97, 134) 0%, rgb(105, 117, 152) 100%);
+}
+.btn-common:focus{
+    color: #fff;
+    border-color: rgb(45,6,35);
+}
+.btn-common:hover{
+    color: #fff;
+    border-color: rgb(45,6,35);
+}
+
+.field_with_errors{
+    position: relative;
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+    min-width: 270px;
+    border: 1px solid red !important;
+    border-radius: 5px;
+  }

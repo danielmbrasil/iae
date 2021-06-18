@@ -1,38 +1,39 @@
-<%= stylesheet_link_tag 'developers' %>
-
-<div class="card bg-light">
-  <article class="card-body mx-auto" style="max-width: 360px; margin-top: -20px; height: 100vh">
-    <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="" width="250" height="250">
-    <h4 class="card-title mt-3 text-center"><%= I18n.t('developers.passwords.edit.title') %></h4>
-    <p class="text-center"><%= I18n.t('developers.passwords.edit.instruction') %></p>
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>   
-      <%= f.hidden_field :reset_password_token %>
-
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-lock"></i>
-          </span>
+<%= stylesheet_link_tag 'sessions_registrations' %>
+<div class="d-flex justify-content-center h-100">
+  <div class="user-card">
+    <div class="d-flex justify-content-center">
+      <div class="brand-logo-container">
+        <img class="brand-logo" src="<%= asset_path('logo.svg')%>" alt="">
+      </div>
+    </div>
+    <article style="margin-top: 70px">
+      <h4 class="card-title mt-3 text-center"><%= I18n.t('developers.passwords.edit.title') %></h4>
+      <p class="text-center"><%= I18n.t('developers.passwords.edit.instruction') %></p>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>   
+        <%= f.hidden_field :reset_password_token %>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-lock"></i>
+            </span>
+          </div>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('developers.passwords.edit.textfields.password'), type: 'password', minlength: 6, required: true %>
         </div>
-        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('developers.passwords.edit.textfields.password'), type: 'password', minlength: 6, required: true %>
-      </div>
-      
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-lock"></i>
-          </span>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-lock"></i>
+            </span>
+          </div>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('developers.passwords.edit.textfields.password-confirmation'), type: 'password', required: true %>
         </div>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('developers.passwords.edit.textfields.password-confirmation'), type: 'password', required: true %>
-      </div>
-
-      <div class="form-group" style="margin-top: 20px">
-        <%= f.submit I18n.t('developers.passwords.edit.buttons.change-password'), class: 'btn btn-primary btn-block' %>
-      </div>
-
-      <%= render 'developers/shared/error_messages', resource: resource %>
-    <% end %>
-  </article>
+        <div class="form-group" style="margin-top: 20px">
+          <%= f.submit I18n.t('developers.passwords.edit.buttons.change-password'), class: 'btn btn-submit btn-block' %>
+        </div>
+        <%= render 'developers/shared/error_messages', resource: resource %>
+      <% end %>
+    </article>
+  </div>
 </div>
 
 

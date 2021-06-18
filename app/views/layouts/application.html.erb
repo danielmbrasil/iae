@@ -14,13 +14,13 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark bg-transparent shadow" style="padding-left:3rem; padding-right:3rem;">
-      <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg') %>" alt="" width="30px" height="30px"></a>
+    <nav class="navbar navbar-dark bg-transparent fixed-top shadow" style="padding-left:3rem; padding-right:3rem;">
+      <a class="navbar-brand" href="/"><img src="<%= asset_path('logo.svg')%>" alt="" width="30px" height="30px"></a>
       <div class="btn-group dropdown dropdown-menu-right">
-        <% if current_developer %>
-          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= current_developer.avatar_url(:medium) %>" alt="Avatar" class="avatar" width="30px" height="30px"></a>
-        <% else %>
-          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= asset_path('logo.svg') %>" alt="Avatar" class="avatar" width="30px" height="30px"></a>
+        <% if current_developer%>
+          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= current_developer.avatar_url(:medium)%>" alt="Avatar" class="avatar dev" width="30px" height="30px"></a>
+        <%else%>
+          <a type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<%= asset_path('guest.svg')%>" alt="Avatar" class="avatar" width="30px" height="30px"></a>
         <% end %>
         <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="dropdownMenu2">
           <% if current_developer or current_guest %>

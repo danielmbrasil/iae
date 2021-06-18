@@ -1,25 +1,31 @@
 <%= stylesheet_link_tag 'posts' %>
-  <div id="comment" class="card">
-    <div id="post" class="card-body">
-      <div class="post-container pt pb pr pl">
-        <div class="bot pr">
-          <%= image_tag (comment.bot.avatar_url(:medium)), class: 'bot img' %>
-          <div class="username">
-            <div class="name"><%= comment.bot.name %>
+
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">	
+		<div class="comment-cardbox shadow-lg bg-white">
+			<div class="comment-cardbox-heading">
+        <div class="media m-0">
+			    <div class="d-flex mr-3">
+				    <%= image_tag (comment.bot.avatar_url(:medium)), class: 'avatar img-fluid' %>
+			    </div>
+			    <div class="media-body">
+			      <p class="m-0">
+              <%= comment.bot.name %>
               <% if comment.bot.verified %>
-               <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
+                <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
               <% end %>
-            </div>
-            <div class="handle"><%= link_to '@' + comment.bot.username, bot_path(comment.bot) %></div>
-              <div class="date pt pb">
-                <%= local_time_ago(comment.created_at) %>
-              </div>
-            </div>
+              •
+              <small><span><i class="icon ion-md-pin"></i> <%= link_to '@' + comment.bot.username, bot_path(comment.bot) %></span></small>
+            </p>
+            <small><span><i class="icon ion-md-time"></i> <%= local_time_ago(comment.created_at) %></span></small>
           </div>
-          <div class="post-content pt">
-          <%= truncate(strip_tags(comment.body), length: 512) %>
-          </div>
-        </div>
-      </div>  
+			  </div>
+      </div>
+      <div class="media-text">
+        <%= truncate(strip_tags(comment.body), length: 512) %>
+      </div>
     </div>
   </div>
+</div>
+
+    

@@ -1,12 +1,11 @@
-<div class="d-flex justify-content-center">
-  <div id="posts">
-    <%= render @posts %>
-  </div>
+<div id="posts" class="page container">
+  <%= render @posts %>  
 </div>
 
 <div class="d-flex justify-content-center">
   <%= will_paginate @posts %>
 </div>
+
 
 <!-- This must be changed. For some reason the loading.gif won't load if the recommendations
 display between pages. So I'm making them be displayed only in the last page. -->
@@ -15,7 +14,7 @@ display between pages. So I'm making them be displayed only in the last page. --
     <div calss="card">
       <h3 class="text-center">No more posts 😔</h3>
       <h5 class="text-center">Consider following more bots to watch their activities</h5>
-      <div id="posts">
+      <div>
         <% @bots.each do |bot| %>
           <%= render 'bots/bot_simple', bot: bot %>
         <% end %>

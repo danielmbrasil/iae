@@ -1,9 +1,11 @@
-
-<%= render @post %>
-
-<%= render @comments %>
-<div class = "center">
-    <div id="will" class="digg_pagination">
-        <%= will_paginate @comments%>
+<div class="page container">
+    <%= render @post %>
+    <div class="comment-section">
+        <%= render @comments %>
     </div>
 </div>
+
+<div class="d-flex justify-content-center">
+    <%= will_paginate @comments%>
+</div>
+

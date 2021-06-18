@@ -1,60 +1,66 @@
-<%= stylesheet_link_tag 'guests' %>
+<%= stylesheet_link_tag 'sessions_registrations' %>
+  <div class="d-flex justify-content-center h-100">
+    <div class="user-card">
+      <div class="d-flex justify-content-center">
+        <div class="brand-logo-container">
+          <img class="brand-logo" src="<%= asset_path('logo.svg')%>" alt="">
+        </div>
+      </div>
+      <article style="margin-top: 70px">
+        <h4 class="card-title mt-3 text-center"><%= I18n.t('guests.registrations.new.title') %></h4>
+        <p class="text-center"><%= I18n.t('guests.registrations.new.instruction') %></p>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+            <%= f.text_field :username, autofocus: true, class: 'form-control', placeholder: I18n.t('guests.registrations.new.textfields.username'), type: 'text', required: true %>
+          </div>
+          
+          <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-envelope"></i>
+              </span>
+            </div>
+            <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: I18n.t('guests.registrations.new.textfields.email'), type: 'email', required: true %>
+          </div>
 
-<div class="card">
-  <article class="card-body mx-auto" style="max-width: 350px; margin-top: -20px">
-    <img class="card-img-top" src="<%= asset_path('logo.svg') %>" alt="" width="250" height="250">
-    <h4 class="card-title mt-3 text-center"><%= I18n.t('guests.registrations.new.title') %></h4>
-    <p class="text-center"><%= I18n.t('guests.registrations.new.instruction') %></p>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-user"></i>
-          </span>
-        </div>
-        <%= f.text_field :username, autofocus: true, class: 'form-control', placeholder: I18n.t('guests.registrations.new.textfields.username'), type: 'text', required: true %>
-      </div>
-      <!-- form-group// -->
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-envelope"></i>
-          </span>
-        </div>
-        <%= f.email_field :email, autocomplete: 'email', class: 'form-control', placeholder: I18n.t('guests.registrations.new.textfields.email'), type: 'email', required: true %>
-      </div>
-      <!-- form-group// -->
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-lock"></i>
-          </span>
-        </div>
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('guests.registrations.new.textfields.password'), type: 'password', minlength: 6, required: true %>
-      </div>
-      <!-- form-group// -->
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-lock"></i>
-          </span>
-        </div>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('guests.registrations.new.textfields.password-confirmation'), type: 'password', required: true %>
-      </div>
-      <div class='col'>
-        <label class="container-checkbox"><%= I18n.t('guests.registrations.new.checkboxes.guidelines') %> <%= link_to I18n.t('guests.registrations.new.links.guidelines'), href = "/rules" %>
-          <%= f.check_box :accept_terms, required: true, class: 'container-checkbox' %>
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <!-- form-group// -->
-      <%= render "guests/shared/error_messages", resource: resource %>
-      <div class="form-group" style="margin-top: 20px">
-        <%= f.submit I18n.t('guests.registrations.new.buttons.sign-up'), class: 'btn btn-primary btn-block' %>
-      </div>
-      <p class="text-center"><%= I18n.t('guests.registrations.new.messages.have-account') %>
-        <a href="sign_in"><%= I18n.t('guests.registrations.new.links.log-in') %></a>
-      </p>
-    <% end %>
-  </article>
-</div>
+          <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-lock"></i>
+              </span>
+            </div>
+            <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('guests.registrations.new.textfields.password'), type: 'password', minlength: 6, required: true %>
+          </div>
+
+          <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-lock"></i>
+              </span>
+            </div>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: I18n.t('guests.registrations.new.textfields.password-confirmation'), type: 'password', required: true %>
+          </div>
+
+          <div class = 'col'>
+            <label><%= I18n.t('guests.registrations.new.checkboxes.guidelines') %> <%= link_to I18n.t('guests.registrations.new.links.guidelines')+'.', href = "/rules"%></label>
+          </div>
+          <!-- form-group// -->
+          <%= render "guests/shared/error_messages", resource: resource %>
+          <div class="form-group" style="margin-top: 20px">
+            <%= f.submit "Create Account", class: 'btn btn-submit btn-block' %>
+          </div>
+          <p class="text-center"><%= I18n.t('guests.registrations.new.messages.have-account') %>
+            <a href="sign_in"><%= I18n.t('guests.registrations.new.links.log-in') %></a>
+          </p>
+        <% end %>
+      </article>
+    </div>
+  </div>

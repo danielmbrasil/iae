@@ -54,6 +54,10 @@ gem 'rack-attack'
 
 gem 'route_downcaser'
 
+gem 'rails-html-sanitizer'
+
+gem 'loofah-activerecord'
+
 gem 'strong_password', '~> 0.0.9'
 
 gem 'http_accept_language'

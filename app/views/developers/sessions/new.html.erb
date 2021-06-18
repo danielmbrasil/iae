@@ -1,67 +1,65 @@
-<%= stylesheet_link_tag "developers" %>
-
-<div class="container h-100" style="margin-top: 30px">
-  <div class="d-flex justify-content-center h-100">
-    <div class="user_card">
-      <div class="d-flex justify-content-center">
-        <div class="brand_logo_container">
-          <img src="<%= asset_path('logo.svg') %>" alt="">
-        </div>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-group input-group" style="margin-top: 80px">
-            <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-user"></i>
-            </span>
-            </div>
-            <%= f.text_field :login, autofocus: true, class: 'form-control', placeholder: I18n.t('developers.sessions.new.textfields.login'), required: true %>
-          </div>
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-lock"></i>
-            </span>
-            </div>
-            <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control', placeholder: I18n.t('developers.sessions.new.textfields.password'), required: true %>
-          </div>
-          <div class="form-group input-group">
-            <% if devise_mapping.rememberable? %>
-              <div class="form-check">
-                <%= f.check_box :remember_me, class: 'form-check-input' %>
-                <label class="form-check-label" style="color: white"><%= I18n.t('developers.sessions.new.checkboxes.remember-me') %></label>
-              </div>
-            <% end %>
-          </div>
-          <div class="form-group input-group">
-            <%= f.submit I18n.t('developers.sessions.new.buttons.login'), class: 'btn btn-primary btn-block' %>
-          </div>
-          <div class="form-group" style="text-align: center">
-            <div class="d-flex justify-content-center links">
-              <p class="text-white">
-                <%= I18n.t('developers.sessions.new.messages.forgot-password') %>
-                <%= link_to I18n.t('developers.sessions.new.links.forgot-password'), new_password_path(resource_name) %>
-              </p>
-            </div>
-            <div class="d-flex justify-content-center links">
-              <p class="text-white">
-                <%= I18n.t('developers.sessions.new.messages.no-account') %>
-                <a href="sign_up">
-                  <%= I18n.t('developers.sessions.new.links.no-account') %></a>
-              </p>
-            </div>
-            <div class="d-flex justify-content-center links">
-              <p class="text-white">
-                <%= link_to I18n.t('developers.sessions.new.links.resend-confirmation'), new_confirmation_path(resource_name) %>
-              </p>
-            </div>
-            <div class="d-flex justify-content-center links">
-              <p class="text-white">
-                <%= link_to I18n.t('developers.sessions.new.links.resend-unlock'), new_unlock_path(resource_name) %>
-              </p>
-            </div>
-        <% end %>
-        </div>
+<%= stylesheet_link_tag 'sessions_registrations' %>
+<div class="d-flex justify-content-center h-100">
+  <div class="user-card">
+    <div class="d-flex justify-content-center">
+      <div class="brand-logo-container">
+        <img class="brand-logo" src="<%= asset_path('logo.svg')%>" alt="">
       </div>
     </div>
+    <article style="margin-top: 70px">
+      <h4 class="card-title mt-3 text-center"><%= I18n.t('developers.sessions.new.messages.title') %></h4>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-user"></i>
+          </span>
+        </div>
+        <%= f.text_field :login, autofocus: true, class: 'form-control', placeholder: I18n.t('developers.sessions.new.textfields.login'), required: true %>
+      </div>
+      <div class="form-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-lock"></i>
+          </span>
+        </div>
+        <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control', placeholder: I18n.t('developers.sessions.new.textfields.password'), required: true %>
+      </div>
+      <div class="form-group input-group">
+        <% if devise_mapping.rememberable? %>
+          <div class="form-check">
+            <%= f.check_box :remember_me, class: 'form-check-input' %>
+            <label class="form-check-label"><%= I18n.t('developers.sessions.new.checkboxes.remember-me') %></label>
+          </div>
+        <% end %>
+      </div>
+      <div class="form-group input-group">
+        <%= f.submit I18n.t('developers.sessions.new.buttons.login'), class: 'btn btn-submit btn-block' %>
+      </div>
+      <div class="form-group" style="text-align: center">
+        <div class="d-flex ">
+          <p>
+            <%= I18n.t('developers.sessions.new.messages.forgot-password') %>
+            <%= link_to I18n.t('developers.sessions.new.links.forgot-password'), new_password_path(resource_name) %>
+          </p>
+        </div>
+        <div class="d-flex ">
+          <p>
+            <%= I18n.t('developers.sessions.new.messages.no-account') %>
+            <a href="sign_up"><%= I18n.t('developers.sessions.new.links.no-account') %></a>
+          </p>
+        </div>
+        <div class="d-flex ">
+          <p>
+            <%= link_to I18n.t('developers.sessions.new.links.resend-confirmation'), new_confirmation_path(resource_name) %>
+          </p>
+        </div>
+        <div class="d-flex ">
+          <p  >
+            <%= link_to I18n.t('developers.sessions.new.links.resend-unlock'), new_unlock_path(resource_name) %>
+          </p>
+        </div>
+      <% end %>
+    </article>
   </div>
 </div>

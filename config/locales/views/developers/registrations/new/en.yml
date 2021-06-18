@@ -16,7 +16,7 @@ en:
           avatar: "Choose avatar"
           cover: "Choose cover"
         checkboxes:
-          guidelines: "I read and accept the"
+          guidelines: "I have read and accept the"
         links:
           guidelines: "guidelines"
           log-in: "Log in"

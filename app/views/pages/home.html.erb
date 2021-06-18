@@ -1,80 +1,44 @@
 <%= stylesheet_link_tag 'pages' %>
 
-<% unless current_guest or current_developer %>
-  <div class="waveWrapper waveAnimation">
-    <div class="waveWrapperInner bgTop">
-      <div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
-    </div>
-    <div class="waveWrapperInner bgMiddle">
-      <div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
-    </div>
-    <div class="waveWrapperInner bgBottom">
-      <div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
-    </div>
-  </div>
 
-  <div class="container-fluid main-div">
-    <div class="row">
-      <div class="col main-card ">
-        <div class="card text-center box-shadow p-2" style="min-height: 150px">
-          <h1><%= I18n.t('homepage.messages.welcome') %></h1>
-          <h2 id="emoji-text" class="text-break"><%= I18n.t('homepage.messages.slogan') + ' ' + @emoji %>
-          </h2>
-        </div>
-      </div>
-      <div class="col main-card">
-        <div class="card text-center box-shadow p-2">
-          <h1><%= I18n.t('homepage.messages.user-type') %></h1>
-          <div class="row justify-content-center">
-            <div class="d-grid gap-2 d-md-flex">
-              <a class="btn btn-user" type="button" id="guest" href=<%= new_guest_session_path %>><%= @emoji_guest %></a>
-              <a class="btn btn-user dev" type="button" id="developer" href=<%= new_developer_session_path %>><%= @emoji_dev %></a>
-            </div>
-            <div clas="col card box-shadow p-2">
-              <a href="<%= new_guest_session_path %>"></a>
-            </div>
-            <div clas="col card-user box-shadow p-2">
-              <a href="<%= new_developer_session_path %>"></a>
-            </div>
+<% if !current_developer && !current_guest %>
+  <div class="welcome-main text-break clip">
+      <div class="row text-vertical-center ">
+          <div class ="col-md-8 welcome-text">
+            <h1><%= I18n.t('homepage.messages.welcome') %></h1>
+            <h3><%= I18n.t('homepage.messages.slogan') %><%=@emoji%></h3>
+          </div>
+          <div class ="col-sm welcome-text">
+            <h1><%= I18n.t('homepage.messages.user-type') %></h1>
+            <br>
+            <a href="<%=new_guest_session_path%>" class="btn btn-dev btn-lg "><h3><%= I18n.t('homepage.buttons.developer') %><%=@emoji_dev%></h3></a>
+            <a href="<%=new_developer_session_path%>" class="btn btn-guest btn-lg"><h3><%= I18n.t('homepage.buttons.guest') %><%=@emoji_guest%></h3></a>
           </div>
         </div>
-      </div>
+
     </div>
-    <% unless @post.nil? %>
-      <div class="row justify-content-center ">
-        <div class="col-auto" id="post-newest">
-          <div class="card main-card p-2" style="min-width: 300px; max-width: 500px; width: auto">
-            <div class="row p-2">
-              <div class="col-auto">
-                <div class="image-cropper">
-                  <%= image_tag (@post.bot.avatar_url(:medium)), class: 'profile-pic' %>
-                </div>
-              </div>
-              <div class="col">
-                <div class="row" style="margin-top: 5px">
-                  <a href="<%= bot_path(@post.bot) %>" class="fw-bold">@<%= @post.bot.username %>
-                    <% if @post.bot.verified %>
-                      <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
-                    <% end %>
-                  </a>
-                </div>
-                <div class="row fs-sm text-muted ">
-                  <p class="fw-lighter fs-6"><%= @post.bot.name %>
-                    •
-                    <%= local_time_ago(@post.created_at) %>
-                </div>
-              </div>
-            </div>
-            <div class="row card-body post-card ">
-              <div class="col ">
-                <h6 class="text-break clip"><%= @post.body %></h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <header id="top" class="header space-float">
+    <div class="wrap">
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">  
+      <img src="<%= asset_path('logo.svg')%>" class="svg"  width="100px" height="100px">    
+    </div>
+</header>
 <% end %>
 
 <% if current_guest or current_developer %>

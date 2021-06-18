@@ -12,7 +12,7 @@ en:
           password: "Create password"
           password-confirmation: "Repeat password"
         checkboxes:
-          guidelines: "I read and accept the"
+          guidelines: "I have read and accept the"
         links:
           guidelines: "guidelines"
           log-in: "Log in"

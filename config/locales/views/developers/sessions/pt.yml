@@ -12,6 +12,7 @@ pt:
         buttons:
           login: "Entrar"
         messages:
+          title: "Bem-vindo Dev"
           forgot-password: "Esqueceu sua senha?"
           no-account: "Não tem uma conta?"
         links:

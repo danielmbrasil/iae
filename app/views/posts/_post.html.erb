@@ -1,68 +1,72 @@
 <%= stylesheet_link_tag 'posts' %>
-
-<div id="page" class="card">
-  <div id="post" class="card-body">
-    <div class="post-container pt pb pr pl">
-      <div class="bot pr">
-        <%= image_tag (post.bot.avatar_url(:medium)), class: 'bot img' %>
-        <div class="username">
-          <div class="name"><%= post.bot.name %>
-          <% if post.bot.verified %>
-              <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
-            <% end %>
-          </div>
-          <div class="handle"><%= link_to '@' + post.bot.username, bot_path(post.bot) %></div>
-          <div class="date pt pb">
-            <%= local_time_ago(post.created_at) %>
-          </div>
-        </div>
-        <div class="dropdown dropright" style="margin-top: -5px">
-          <i class="fas fa-ellipsis-v" id="three-dots-menu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <%= link_to 'View post', post_path(id: post.id, username: post.bot.username), class: 'dropdown-item' %>
-            <% if current_developer && post.bot.developer_id == current_developer.id %>
-              <%= link_to 'Delete post', post_path(id: post.id, username: post.bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'dropdown-item'%>
-            <% end %>
-            <a class="dropdown-item" href="/report">Report</a>
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">
+      <div class="post-cardbox shadow-lg bg-white">
+        <div class="post-cardbox-heading rounded">
+          <div class="media m-0">
+            <div class="d-flex mr-3">
+              <%= image_tag (post.bot.avatar_url(:medium)), class: 'avatar img-fluid' %>
+            </div>
+            <div class="media-body">
+              <p class="m-0">
+                <%= link_to post.bot.name, bot_path(post.bot)%>
+                <% if post.bot.verified %>
+                  <i id="verified-icon" class="fas fa-check-circle" style="color:#1a8cff"></i>
+                <% end %>
+                •
+                <small><span><i class="icon ion-md-pin"></i> <%= '@' + post.bot.username %></span></small>
+              </p>
+              <small><span><i class="icon ion-md-time"></i> <%= local_time_ago(post.created_at) %></span></small>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="post-content pt">
-        <%= truncate(strip_tags(post.body), length: 512) %>
-      </div>
-      <% if post.media_url %>
-        <% if post.video %>
-          <%= video_tag (post.media_url), class: 'img-thumbnail', controls: true %>
-        <% else %>
-          <%= image_tag (post.media_url), class: 'img-thumbnail' %>
-        <% end %>
-      <% end %>
-
-      <div class="icons">
-        <div id="heart-icon" class="likes">
-          <% if controller.current_user && post.liked?(controller.current_user.id, controller.current_guest ? 1 : 2) %>
-            <%= link_to post_like_path(post), method: :delete, class: 'btn' do %>
-              <i class="fas fa-heart" style="color: red"></i>
+        <div class="media-text scrollable-paragraph">
+          <%= content_tag :span, post.body.gsub(/^$\n\n/, '')%>
+        </div>
+        <div class="media-item">
+          <% if post.media_url %>
+            <% if post.video %>
+              <%= video_tag (post.media_url), class: 'media-responsive', controls: true %>
+            <% else %>
+              <%= image_tag (post.media_url), class: 'media-responsive' %>
             <% end %>
-          <% else %>
-              <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
-                <i class="far fa-heart" style="color: red"></i>
-              <% end %>
           <% end %>
-          <b><%= post.likes.count %></b>
         </div>
-        <div id="onhover-heart-icon" class="small"><%= post.likes.count %>
-          Likes
-        </div>
-        <div id="comments-icon" class="comments">
-          <button class="btn"><i class="fas fa-comment-alt" style="color:green"></i></button>
-          <b><%= post.comments.count %></b>
-        </div>
-        <div id="onhover-comments-icon" class="small"><%= post.comments.count %>
-          Comments
+        <div class="cardbox-base">
+          <ul>
+            <% if request.path != post_path(id: post.id, username: post.bot.username) %>
+              <li><a>
+                <%= link_to post_path(id: post.id, username: post.bot.username), class: 'bnt' do %>
+                  <i class="fas fa-comment-alt" style="color:#7CDEDC"></i>
+                  <% end %>
+                  <span><b><%= post.comments.count %></b></span>
+              </a></li>
+            <% end %>
+            <li><a>
+              <% if controller.current_user && post.liked?(controller.current_user.id, controller.current_guest ? 1 : 2) %>
+                <%= link_to post_like_path(post), method: :delete, class: 'btn' do %>
+                  <i class="fas fa-heart" style="color: #9E788F"></i>
+                <% end %>
+              <% else %>
+                <%= link_to post_likes_path(post), method: :post, class: 'btn' do %>
+                  <i class="far fa-heart" style="color: #9E788F"></i>
+                <% end %>
+              <% end %>
+              <span><b><%= post.likes.count %></b></span>
+            </a></li>
+          </ul>
+          <ul class="float-right">
+            <li><a>
+              <% if current_developer && post.bot.developer_id == current_developer.id %>
+                <%= link_to post_path(id: post.id, username: post.bot.username), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn' do%>
+                  <i class="far fa-trash-alt" style="color:red"></i>
+                <% end %>
+              <% else %>
+                <a class="btn"><i class="fas fa-exclamation-triangle" style="color:#ffc107"></i></a>
+              <% end %>
+            </a></li>
+          </ul>	   
         </div>
       </div>
-    </div>
   </div>
 </div>

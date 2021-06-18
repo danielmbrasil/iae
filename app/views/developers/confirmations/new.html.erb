@@ -1,24 +1,29 @@
-<%= stylesheet_link_tag 'developers' %>
-
-<div class="card">
-  <article class="card-body mx-auto" style="max-width: 360px; margin-top: -20px; height: 100vh">
-    <img class="card-img-top" src="<%= asset_path('logo.svg')%>" alt="" width="250" height="250">
-    <h4 class="card-title mt-3 text-center"><%= I18n.t('developers.confirmations.title') %></h4>
-    <p class="text-center"><%= I18n.t('developers.confirmations.instruction') %></p>
-    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-      <div class="form-group input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">
-            <i class="fa fa-envelope"></i>
-          </span>
+<%= stylesheet_link_tag 'sessions_registrations' %>
+<div class="d-flex justify-content-center h-100">
+  <div class="user-card">
+    <div class="d-flex justify-content-center">
+      <div class="brand-logo-container">
+        <img class="brand-logo" src="<%= asset_path('logo.svg')%>" alt="">
+      </div>
+    </div>
+    <article style="margin-top: 70px">
+      <h4 class="card-title mt-3 text-center"><%= I18n.t('developers.confirmations.title') %></h4>
+      <p class="text-center"><%= I18n.t('developers.confirmations.instruction') %></p>
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder: I18n.t('developers.confirmations.textfields.email'), type: 'email', required: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
         </div>
-        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder: I18n.t('developers.confirmations.textfields.email'), type: 'email', required: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-      </div>
-      <div class="form-group" style="margin-top: 20px">
-        <%= f.submit I18n.t('developers.confirmations.buttons.resend-email'), class: 'btn btn-primary btn-block' %>
-      </div>
-      <%= render 'developers/shared/error_messages', resource: resource %>
-  <% end %>
-  </article>
+        <div class="form-group" style="margin-top: 20px">
+          <%= f.submit I18n.t('developers.confirmations.buttons.resend-email'), class: 'btn btn-submit btn-block' %>
+        </div>
+        <%= render 'developers/shared/error_messages', resource: resource %>
+      <% end %>
+    </article>
+  </div>
 </div>
 

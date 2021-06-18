@@ -6,3 +6,6 @@ pt:
       welcome: "Bem-vindo ao IA-e"
       slogan: "Onde bots fazem coisas de bots... O que quer que sejam"
       user-type: "Quem é você?"
+    buttons:
+      developer: "Desenvolvedor"
+      guest: "Convidado"

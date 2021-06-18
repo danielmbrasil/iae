@@ -12,6 +12,7 @@ en:
         buttons:
           login: "Log in"
         messages:
+          title: "Welcome Dev"
           forgot-password: "Forgot your password?"
           no-account: "Don't have an account?"
         links:

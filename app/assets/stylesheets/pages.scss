@@ -3,18 +3,124 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap/scss/bootstrap";
 
+.space-float{
+  text-rendering: optimizeLegibility;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  overflow: hidden;
+}
+.wrap{
+  perspective-origin: 50% 50%;
+}
+.svg{
+  position:absolute;
+  bottom: -100vh;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+.post-temp{
+  position:absolute;
+  bottom: -100vh;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+$total: 18;
+@for $j from 1 through $total {
+  $scale:random(1) - .4;
+  
+  .svg:nth-child(#{$j}){
+    left:random(120) * 1% - 20;
+    animation: raise#{$j} 6 + random(15) +s linear infinite;
+    animation-delay:random(10) - 5 + s;
+    transform: scale((.2 * 100vh * random(5)) + .5) rotate(random(360) + deg);
+    z-index: $j;
+    filter: blur(random(25) - 12 + px);
+
+    @keyframes raise#{$j} {
+      to{
+       bottom:150vh;
+       transform: scale((.1 * random(5)) + .5) rotate(random(360) + deg);
+      }
+    }
+  }
+}
+
+.welcome-main{
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding-top: 75px;
+  padding-inline: 5%;
+  overflow-y:scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.welcome-main::-webkit-scrollbar {
+  display: none;
+}
+
+.welcome-text{
+  background-color: rgba($color: #a9b3ce, $alpha: 0.5);
+  border-radius: 10px;
+  padding: 5%;
+  margin: 10px;
+}
+
+.btn-dev{
+  background-color: rgb(158, 120, 143);
+  border-color: rgb(158, 120, 143);
+}
+
+a.btn-dev:hover,.btn-guest:hover {
+  background-color: rgb(78, 78, 134)
+}
+
+.btn-guest{
+  background-color:rgb(169,179,206);
+}
+
 .max-post-img {
   max-height: 50vh;
   max-width: 50vw;
+}
+
+.text-vertical-center {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.header {
+  display: table;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgb(158, 120, 143) 50%, rgb(169,179,206) 100%) no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
 
 .overflow {
   width: 10em;
   outline: 1px solid #000;
   margin: 0 0 2em;
-  /**
-   * Required properties to achieve text-overflow
-   */
   white-space: nowrap;
   overflow: hidden;
 }
@@ -88,9 +194,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
 .post-card::-webkit-scrollbar {
@@ -139,76 +243,6 @@ h6 {
   }
 }
 
-.waveWrapper {
-  z-index: -20;
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  margin: auto;
-  background-image: linear-gradient(to top, #86377b 20%, #4e4e86 80%);
-}
-
-.waveWrapperInner {
-  position: absolute;
-  width: 100%;
-  overflow: hidden;
-  height: 100vh;
-}
-
-.bgTop {
-  z-index: -5;
-  opacity: 0.5;
-}
-
-.bgMiddle {
-  z-index: -10;
-  opacity: 0.75;
-}
-
-.bgBottom {
-  z-index: -12;
-}
-
-.wave {
-  position: absolute;
-  left: 0;
-  width: 200%;
-  height: 100%;
-  background-repeat: repeat no-repeat;
-  background-position: 0 bottom;
-  transform-origin: center bottom;
-}
-
-.waveTop {
-  background-size: 50% 100px;
-}
-
-.waveAnimation .waveTop {
-  animation: move-wave 3s;
-  -webkit-animation: move-wave 3s;
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
-.waveMiddle {
-  background-size: 50% 120px;
-}
-
-.waveAnimation .waveMiddle {
-  animation: move_wave 10s linear infinite;
-}
-
-.waveBottom {
-  background-size: 50% 100px;
-}
-
-.waveAnimation .waveBottom {
-  animation: move_wave 15s linear infinite;
-}
-// css from feed
 .top_bar_right {
   height: 100px;
   width: 25%;
