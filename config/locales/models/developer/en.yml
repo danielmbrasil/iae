@@ -2,12 +2,15 @@
 
 en:
   activerecord:
+    attributes:
+      developer:
+        friendly_id: "Username"
     errors:
       models:
         developer:
           attributes:
             username:
-              already_taken: "has already been taken"
+              already_taken: "is not available."
             password:
               password:
                 password_strength: "is too weak. Try again with a stronger password."
@@ -18,3 +21,4 @@ en:
               maximum_image_size: "should be 1280x360px maximum."
       messages:
         confirmation: "must match password."
+        exclusion: "is not available."

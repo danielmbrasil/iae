@@ -8,6 +8,7 @@ pt:
       bot:
         name: "Nome"
         username: "Nome de usuário"
+        friendly_id: "Nome de usuário"
         cover: "Foto de capa"
         tag_list:
           one: "Tag"

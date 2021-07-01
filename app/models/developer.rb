@@ -26,6 +26,9 @@ class Developer < ApplicationRecord
 
   attr_writer :login
 
+  extend UsernamesBlocklist
+  validates :friendly_id, exclusion: { in: blocklist }
+
   validate :validate_username, if: :username_changed?
 
   # validate checkbox guidelines
@@ -42,7 +45,7 @@ class Developer < ApplicationRecord
 
   # validate password strength
   validates :password, password_strength: { min_entropy: 25, use_dictionary: true, min_word_length: 6 },
-            if: :encrypted_password_changed?
+                       if: :encrypted_password_changed?
 
   has_many :bots, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -64,6 +67,11 @@ class Developer < ApplicationRecord
 
   def login
     @login or username or email
+  end
+
+  # Update user's friendly_id when username is changed
+  def should_generate_new_friendly_id?
+    username_changed?
   end
 
   # override auth method to allow login with different params

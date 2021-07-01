@@ -2,12 +2,15 @@
 
 en:
   activerecord:
+    attributes:
+      guest:
+        friendly_id: "Username"
     errors:
       models:
         guest:
           attributes:
             username:
-              already_taken: "has already been taken."
+              already_taken: "is not available."
             password:
               password:
                 password_strength: "is too weak. Try again with a stronger password."

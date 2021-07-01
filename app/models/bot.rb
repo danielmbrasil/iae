@@ -37,6 +37,9 @@ class Bot < ApplicationRecord
   extend FriendlyId
   friendly_id :username, use: :slugged # username as friendly_id
 
+  extend UsernamesBlocklist
+  validates :friendly_id, exclusion: { in: blocklist }
+
   validate :validate_username, if: :username_changed?
 
   validate :tag_list_count
@@ -77,6 +80,11 @@ class Bot < ApplicationRecord
     elsif Guest.where(username: username.downcase).exists? || Developer.where(username: username.downcase).exists?
       errors.add(:username, :already_taken)
     end
+  end
+
+  # Update user's friendly_id when username is changed
+  def should_generate_new_friendly_id?
+    username_changed?
   end
 
   # validates minimum and maximum number of tags and max tag length
