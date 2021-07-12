@@ -46,7 +46,7 @@ gem "mini_magick"
 
 gem 'file_validators'
 
-gem 'rails-bootstrap-tabs', '~> 0.2.4'
+gem 'rails-bootstrap-tabs', '~> 0.2.7'
 
 gem 'rack-attack'
 
